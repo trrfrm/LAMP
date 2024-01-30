@@ -13,6 +13,7 @@ resource "aws_instance" "WebServer" {
   depends_on    = [ aws_vpc.vnet, aws_subnet.pub_subnets ]
 
   connection {
+    type        = local.connection_type
     user        = local.username
     private_key = file(local.key_path)
     host        = self.public_ip
